@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="450" viewBox="0 0 1200 450" role="img" aria-labelledby="title desc">
+  <title id="title">先把话说出来，再把人留下来</title>
+  <desc id="desc">口播改稿 Skill 把原始口述经过结构选择，整理成可以直接念的社交媒体脚本。</desc>
+  <rect width="1200" height="450" rx="24" fill="#F6F2E9"/>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif">
+    <text x="60" y="64" font-size="23" font-weight="600" fill="#68665F">SPOKEN SCRIPT EDITOR / 口播改稿 SKILL</text>
+    <text x="58" y="151" font-size="64" font-weight="750" fill="#242B29">先把话说出来。</text>
+    <text x="58" y="231" font-size="64" font-weight="750" fill="#245D4A">再把人留下来。</text>
+    <path d="M66 254 Q285 243 512 253" fill="none" stroke="#E39759" stroke-width="8" stroke-linecap="round"/>
+    <g id="narrative-sequence" font-size="34" font-weight="600">
+      <text x="62" y="364" fill="#68665F">原始口述</text>
+      <path d="M252 352 H318 M306 340 L320 352 L306 364" fill="none" stroke="#68665F" stroke-width="3"/>
+      <text x="352" y="364" fill="#245D4A">选择结构</text>
+      <path d="M544 352 H610 M598 340 L612 352 L598 364" fill="none" stroke="#68665F" stroke-width="3"/>
+      <text x="644" y="364" fill="#242B29">可直接念的脚本</text>
+    </g>
+    <g id="script-editing-motif" transform="translate(835 86)">
+      <path d="M0 0 H230 V154 H0 Z" fill="#FFFFFF"/>
+      <path d="M20 32 H157 M20 58 H207" stroke="#C7CAC3" stroke-width="8" stroke-linecap="round"/>
+      <rect x="14" y="82" width="191" height="30" rx="5" fill="#E2EBDD"/>
+      <path d="M23 96 H163" stroke="#245D4A" stroke-width="8" stroke-linecap="round"/>
+      <path d="M20 127 H114" stroke="#C7CAC3" stroke-width="8" stroke-linecap="round"/>
+      <path d="M244 96 H264 V16 H189 M201 5 L188 16 L201 27" fill="none" stroke="#D08348" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+</svg>

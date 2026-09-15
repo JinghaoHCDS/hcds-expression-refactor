@@ -1,0 +1,4 @@
+interface:
+  display_name: "口播结构选择与改稿"
+  short_description: "根据真实口述推荐合适结构，整理叙述顺序并改成自然可念的短视频逐字稿"
+  default_prompt: "请用 $spoken-script-editor 根据我的口述选择合适结构，并按我的需求提供叙述提纲或完整逐字稿。"
