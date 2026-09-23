@@ -1,12 +1,12 @@
 # README 宣传图与动画
 
-正式首图采用已确认的“排句”方案：口头填充在挡板前停住并淡出，有内容的句子按“感受—痛点—办法”归位，每段附简短作用说明。上半部分标题加粗。图中文字是改写演示，不是模型效果实测。
+正式首图采用已确认的“排句”方案：口头填充在挡板前停住并淡出，有内容的句子按“感受—痛点—办法”归位，每段附简短作用说明。上半部分标题加粗，外框采用 28 px 圆角，四角透明。图中文字是改写演示，不是模型效果实测。
 
 仅沿用个人配色：雾蓝 `#BECBEB`、卡布里蓝 `#0C91FA`、麦黄 `#EBCB75`、墨灰 `#343A46`、纸白 `#F7F7F4`。使用系统无衬线字体，不分发字体二进制。
 
 - `hero.svg`：完成状态的静态版本，支持缩放。
 - `author-avatar.png`：作者提供的原始头像；SVG 内嵌该图片，右上角配圆形裁切、轻微阴影与署名，GIF 同步呈现。社交账号入口位于仓库 README 首图下方。
-- `hero.gif`：README 自动播放的动画，1200 × 620、20 FPS、9 秒循环，约 888 KB。
+- `hero.gif`：README 自动播放的动画，1200 × 620、20 FPS、9 秒循环，约 1611 KB。
 - `../../scripts/readme/build_hero.py`：文案、布局和时间函数的源文件，两种产物从同一套规则生成。
 - `../../scripts/readme/render_svg_frames.cjs`：将 SVG 帧栅格化，最终由 FFmpeg 编码为 GIF。
 
@@ -14,11 +14,11 @@ README 通过 `<picture>` 为减少动态效果偏好提供静态 SVG，并保�
 
 ## 重新生成首图
 
-需要 Python 3、Node.js、FFmpeg。渲染依赖可安装在临时目录，不给 Skill 或提示词构建增加依赖。在仓库根目录运行：
+需要 Python 3、Pillow、Node.js、FFmpeg。以下使用 uv 临时提供 Pillow，不给 Skill 或提示词构建增加依赖。在仓库根目录运行：
 
 ```bash
 npm install --prefix /tmp/hcds-svg-render --no-audit --no-fund @resvg/resvg-js@2.6.2
-python3 scripts/readme/build_hero.py \
+uv run --no-project --with pillow python scripts/readme/build_hero.py \
   --renderer-module /tmp/hcds-svg-render/node_modules/@resvg/resvg-js
 ```
 

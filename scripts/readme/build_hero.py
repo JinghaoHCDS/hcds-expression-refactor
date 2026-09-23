@@ -7,6 +7,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 from xml.sax.saxutils import escape
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'assets/readme'
@@ -46,8 +47,10 @@ def rect(x,y,w,h,fill,**attrs):
 def svg(body, title, desc, bg=PAPER):
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="title desc">
 <title id="title">{escape(title)}</title><desc id="desc">{escape(desc)}</desc>
+<defs><clipPath id="hero-rounded"><rect width="{W}" height="{H}" rx="28"/></clipPath></defs>
+<g clip-path="url(#hero-rounded)">
 <rect width="{W}" height="{H}" fill="{bg}"/>
-<g font-family="{FONT}">{body}</g></svg>'''
+<g font-family="{FONT}">{body}</g></g></svg>'''
 
 
 @lru_cache(maxsize=1)
@@ -152,6 +155,15 @@ def run(module):
         common=['ffmpeg','-v','error','-y','-framerate',str(FPS),'-i',str(pngs/'frame-%04d.png')]
         subprocess.run(common+['-vf','palettegen=max_colors=256:stats_mode=full','-frames:v','1',str(work/'palette.png')],check=True)
         subprocess.run(common+['-i',str(work/'palette.png'),'-lavfi','paletteuse=dither=none:diff_mode=rectangle','-loop','0',str(OUT/f'{name}.gif')],check=True)
+        # Keep transparent corners while encoding only changed frame regions.
+        with Image.open(OUT/f'{name}.gif') as animation:
+            frames = []
+            for i in range(animation.n_frames):
+                animation.seek(i)
+                frames.append(animation.convert('RGBA'))
+        frames[0].save(OUT/f'{name}.gif', save_all=True,
+                       append_images=frames[1:], duration=1000//FPS,
+                       loop=0, disposal=1, optimize=True)
     print(f'{name}: {(OUT/f"{name}.gif").stat().st_size/1024:.0f} KB',flush=True)
 
 
