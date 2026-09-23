@@ -137,10 +137,10 @@
 需要能运行 `npx` 的 Node.js 环境，使用 Skills CLI：
 
 ```bash
-npx skills add JinghaoHCDS/spoken-script-editor --skill hcds-expression-refactor
+npx skills add JinghaoHCDS/hcds-expression-refactor --skill hcds-expression-refactor
 ```
 
-仓库地址仍为 `JinghaoHCDS/spoken-script-editor`，Skill 名为 `hcds-expression-refactor`。也可以在本仓库根目录运行 `npx skills add . --skill hcds-expression-refactor` 安装本地版本。
+仓库地址为 `JinghaoHCDS/hcds-expression-refactor`，Skill 名为 `hcds-expression-refactor`。也可以在本仓库根目录运行 `npx skills add . --skill hcds-expression-refactor` 安装本地版本。
 
 按安装器提示选择目标工具与安装范围。具体调用方式取决于使用的 AI 工具。
 
