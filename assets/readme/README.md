@@ -5,7 +5,8 @@
 仅沿用个人配色：雾蓝 `#BECBEB`、卡布里蓝 `#0C91FA`、麦黄 `#EBCB75`、墨灰 `#343A46`、纸白 `#F7F7F4`。使用系统无衬线字体，不分发字体二进制。
 
 - `hero.svg`：完成状态的静态版本，支持缩放。
-- `hero.gif`：README 自动播放的动画，1200 × 620、20 FPS、9 秒循环，约 894 KB。
+- `author-avatar.png`：作者提供的原始头像；SVG 内嵌该图片，右上角配圆形裁切、轻微阴影与署名，GIF 同步呈现。社交账号入口位于仓库 README 首图下方。
+- `hero.gif`：README 自动播放的动画，1200 × 620、20 FPS、9 秒循环，约 888 KB。
 - `../../scripts/readme/build_hero.py`：文案、布局和时间函数的源文件，两种产物从同一套规则生成。
 - `../../scripts/readme/render_svg_frames.cjs`：将 SVG 帧栅格化，最终由 FFmpeg 编码为 GIF。
 

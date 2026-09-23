@@ -5,6 +5,13 @@
   </picture>
 </p>
 
+<p align="center">
+  HCDS 制作 · 更多内容与交流：
+  <a href="https://www.xiaohongshu.com/user/profile/6a36bd0f000000000e03d400">🍠 小红书</a>
+  &nbsp;·&nbsp;
+  <a href="https://www.douyin.com/user/MS4wLjABAAAAATjjmXVgH_LNsihtQIebvUVLv4fKdR2Lv4QP1dpWv54">🎵 抖音</a>
+</p>
+
 [查看静态宣传图](assets/readme/hero.svg)
 
 # HCDS Expression Refactor · 表达重构

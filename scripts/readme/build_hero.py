@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Build the approved README hero SVG and GIF from one deterministic animation source."""
 import argparse
+import base64
+from functools import lru_cache
 from pathlib import Path
 import subprocess
 import tempfile
@@ -48,6 +50,21 @@ def svg(body, title, desc, bg=PAPER):
 <g font-family="{FONT}">{body}</g></svg>'''
 
 
+@lru_cache(maxsize=1)
+def author_mark():
+    avatar = base64.b64encode((OUT/'author-avatar.png').read_bytes()).decode('ascii')
+    return f'''<defs>
+<clipPath id="author-circle"><circle cx="1097" cy="174" r="39"/></clipPath>
+<filter id="author-shadow" x="-40%" y="-40%" width="180%" height="190%">
+<feGaussianBlur in="SourceAlpha" stdDeviation="3"/><feOffset dy="4"/>
+<feComponentTransfer><feFuncA type="linear" slope=".18"/></feComponentTransfer>
+<feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter></defs>
+<circle cx="1097" cy="174" r="41" fill="{PAPER}" filter="url(#author-shadow)"/>
+<image x="1058" y="135" width="78" height="78" href="data:image/png;base64,{avatar}" clip-path="url(#author-circle)"/>
+''' + text(1038,169,'HCDS',22,INK,700,text_anchor='end') + text(1038,196,'作者 · 制作',15,INK,500,text_anchor='end')
+
+
 def typeset(t):
     b=text(54,48,'HCDS  /  EXPRESSION REFACTOR',19,INK,700,letter_spacing=1.2)
     # Explicit weight plus a fine matching stroke keeps the headings visibly bold
@@ -56,6 +73,7 @@ def typeset(t):
     b+=text(54,198,'最后，讲得明明白白。',59,INK,800,stroke=INK,stroke_width=.65,paint_order='stroke')
     b+=text(969,73,'排句',51,BLUE,800,stroke=BLUE,stroke_width=.5,paint_order='stroke')
     b+=text(971,105,'去噪 · 梳理 · 成稿',18,INK,600)
+    b+=author_mark()
     b+=text(59,271,'散落的口述',22,INK,600)
     b+=text(712,271,'可以直接念的稿',22,INK,600)
     b+=text(586,271,'去噪',20,INK,600)
