@@ -1,0 +1,4 @@
+interface:
+  display_name: "HCDS Expression Refactor"
+  short_description: "清理口述噪音并保留个人语气，按主题整理成一篇或多篇可直接念的完整口播稿"
+  default_prompt: "请用 $hcds-expression-refactor 清理我的口述并保留个人语气，按主题选择合适结构，直接写出完整口播稿，不补编事实。"

@@ -1,14 +1,19 @@
 <p align="center">
-  <img src="assets/readme/hero.svg" width="100%" alt="口播改稿 Skill：先把话说出来，再把人留下来。原始口述经过结构选择，整理成可直接念的脚本。">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/readme/hero.svg">
+    <img src="assets/readme/hero.gif" width="100%" alt="HCDS Expression Refactor：口头填充被过滤，有内容的句子按感受、痛点、办法整理成可直接念的口播稿。">
+  </picture>
 </p>
 
-# 口播改稿 Skill · Spoken Script Editor
+[查看静态宣传图](assets/readme/hero.svg)
+
+# HCDS Expression Refactor · 表达重构
 
 **你负责平铺直叙地讲，AI 帮你组织成让人愿意听下去的口播脚本。**
 
-想到哪说到哪也没关系。把你的经历、想法、方法交给 AI，它会从七种叙事结构中选出合适的一种，调整开头、顺序和表达，输出可以直接念的逐字稿。
+想到哪说到哪也没关系。把你的经历、想法、方法交给 AI，它会清理卡壳和无意义重复，保留个人语气，为每个主题选择合适的讲法，调整开头、顺序和表达，直接输出可以念的完整口播稿。一次口述包含多个独立、完整且有价值的主题时，可以整理成多篇；同一故事里的对照和动机不会机械拆开。
 
-[看改稿案例](#先看一段改稿) · [开始使用](#开始使用) · [查看 Skill](skills/spoken-script-editor/SKILL.md) · [MIT License](LICENSE)
+[看改稿案例](#先看一段改稿) · [开始使用](#开始使用) · [查看 Skill](skills/hcds-expression-refactor/SKILL.md) · [MIT License](LICENSE)
 
 ## 先看一段改稿
 
@@ -105,13 +110,13 @@
 
 </details>
 
-[查看四组完整案例及改写要点 →](examples/before-after.md)
+[查看完整案例、口述清理及多主题拆篇演示 →](examples/before-after.md)
 
 ## 它怎么把你的话变成脚本？
 
-**原始口述 → 判断观众为什么在意 → 选择主结构 → 重排材料 → 优化开头和语气 → 交付逐字稿。**
+**原始口述 → 清理噪音并整理主题 → 每篇选择讲法 → 重排材料 → 优化开头和衔接 → 交付完整稿。**
 
-这套 Skill 将内容创作中常用的叙事方法整理成明确的选择规则。它会判断你是想教方法、讲观点、做复盘，还是记录一段生活；每次选一个主结构，再按需加入反差、好奇问题、具体收益和口语化表达。
+这套 Skill 将内容创作中常用的叙事方法整理成明确的选择规则。它会判断你是想教方法、讲观点、做复盘，还是记录一段生活；每篇选一个主结构，再按需加入反差、好奇问题、具体收益和口语化表达。
 
 | 你想讲什么 | 它优先怎么组织 |
 |---|---|
@@ -123,7 +128,7 @@
 | 我整理了一套经验 | 痛点 → 收获 → 经验依据 → 分点方法 |
 | 今天发生了一件小事 | 心情 → 事件 → 反应 → 感受 |
 
-你不用先学会这些公式。**把事情说清楚，结构交给 AI 选。** 想法还没定时，也可以只让它给提纲。
+原顺序已经合适时允许少改，模板不贴切时按材料的自然逻辑组织。你不用先学会这些公式。**把事情说清楚，结构交给 AI 选。** 想法还没定时，也可以只让它给提纲。
 
 ## 开始使用
 
@@ -132,16 +137,19 @@
 需要能运行 `npx` 的 Node.js 环境，使用 Skills CLI：
 
 ```bash
-npx skills add JinghaoHCDS/spoken-script-editor --skill spoken-script-editor
+npx skills add JinghaoHCDS/spoken-script-editor --skill hcds-expression-refactor
 ```
+
+仓库地址仍为 `JinghaoHCDS/spoken-script-editor`，Skill 名为 `hcds-expression-refactor`。也可以在本仓库根目录运行 `npx skills add . --skill hcds-expression-refactor` 安装本地版本。
 
 按安装器提示选择目标工具与安装范围。具体调用方式取决于使用的 AI 工具。
 
 安装后，在支持 `$skill-name` 调用的工具中输入：
 
 ```text
-请用 $spoken-script-editor 把下面的口述改成可以直接念的口播稿。
-先判断适合什么结构，保留我的真实经历和说话习惯，不要补编事实。
+请用 $hcds-expression-refactor 把下面的口述改成可以直接念的口播稿。
+清理无意义重复，保留我的真实经历和说话习惯，不要补编事实。
+有多个独立完整的主题时可以分篇，每篇附一句结构说明。
 
 我想说的是：
 [直接粘贴你的口述，想到哪说到哪也可以]
@@ -149,9 +157,22 @@ npx skills add JinghaoHCDS/spoken-script-editor --skill spoken-script-editor
 
 ### 不安装，先试一遍
 
-把 [SKILL.md](skills/spoken-script-editor/SKILL.md)、[结构细则](skills/spoken-script-editor/references/structures.md)、[开头与表达](skills/spoken-script-editor/references/expression.md) 的正文一起提供给 AI，再发你的口述即可。
+打开 [完整提示词](dist/hcds-expression-refactor.prompt.md)，复制全文到普通聊天工具，再提供“一句话说明想讲什么 + 原始口述”。不需要安装 Skill 或另行读取参考文件。
 
-普通聊天工具无法自动访问相对文件链接，所以需要同时提供这三个文件，或将它们上传到工具支持的知识库。
+在已有创作模板中，也可以把全文替换到文末的旧提示词区域。沿用模板已明确的身份、受众和稿件位置；如果外围写死了旧输出规则，改为引用文末最新交付规则即可，无需重做布局。是否写入文档取决于宿主能力和用户授权；普通聊天直接返回稿件。
+
+### 修改规则与重新生成
+
+规则只维护在 [SKILL.md](skills/hcds-expression-refactor/SKILL.md) 和其 `references/` 下；`dist` 是自动生成产物，不手工编辑。安装版按需读取参考细则，完整版自动内嵌全部七种结构和表达方法。
+
+在仓库根目录使用 Python 3.9 或更高版本（仅标准库）：
+
+```bash
+python3 scripts/build_prompt.py
+python3 scripts/build_prompt.py --check
+```
+
+第一条生成 `dist/hcds-expression-refactor.prompt.md`；第二条只检查、不写文件，缺失或过期时返回非零退出码。修改源规则后重新生成，并把源文件与产物一起保留。构建不调用模型、不总结规则，也不写入时间戳。
 
 ### 还可以这样用
 
@@ -172,10 +193,12 @@ npx skills add JinghaoHCDS/spoken-script-editor --skill spoken-script-editor
 
 ## 你会拿到什么
 
-- **完整逐字稿**：可以直接念，不夹杂镜头、花字和分析批注。
-- **结构选择理由**：解释为什么这种讲法适合这次内容。
-- **简短改动说明**：告诉你调整了什么，方便改回自己的语气。
-- **必要的材料缺口**：有缺口才问，不为套模板编故事。
+- **完整口播稿**：有个人语气、可以直接念，不夹杂镜头、花字和分析批注。
+- **一句结构说明**：在每篇稿外说明讲法和关键安排。
+
+拆成多篇时，先用一句话说明原因，再分别给出“稿件一｜主题”“稿件二｜主题”等完整稿和结构说明。有价值但不足以独立成稿的支线才放入“其他可用素材”。不默认给同一主题多个备选版本或长篇改动报告。
+
+提供待处理口述时默认直接改稿；只有明确只要建议、提纲、审阅或不写全文时才按限定交付。必要材料缺失时简短指出，不为套模板编故事。用户看稿后重新口述是个人用法，不是必须的第二轮流程。
 
 这是给 AI 使用的文字 Skill，不是独立剪辑软件。它不需要自己的 API Key；运行它的 AI 工具可能有账号、模型或费用要求。它帮助优化社交媒体口播的观看理由、信息顺序和表达，不承诺播放、涨粉或转化结果。
 
